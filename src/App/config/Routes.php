@@ -12,6 +12,8 @@ use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\CategoryController;
 use App\Controllers\DashboardController;
+use App\Controllers\TagController;
+use App\Controllers\WikiController;
 
 function registerRoutes(App $app)
 {
@@ -29,4 +31,15 @@ function registerRoutes(App $app)
     $app->get('/category/{categoryId}', [CategoryController::class, 'getCategory']);
     $app->post('/category', [CategoryController::class, 'addCategory']);
     $app->delete('/category/{categoryId}', [CategoryController::class, 'DeleteCategory']);
+    $app->post('/category/{categoryId}', [CategoryController::class, 'updateCategory']);
+    //TAgs
+    $app->get('/tag', [TagController::class, 'index']);
+    $app->get('/tag/{tagid}', [TagController::class, 'gettag']);
+    $app->post('/tag', [TagController::class, 'addTag']);
+    $app->delete('/tag/{tagid}', [TagController::class, 'deleteTag']);
+    //categories home
+    $app->get('/categories', [CategoryController::class, "cotegiesPage"]);
+
+    // wiki
+    $app->get('/Wiki/{categoryId}', [WikiController::class, "index"]);
 }

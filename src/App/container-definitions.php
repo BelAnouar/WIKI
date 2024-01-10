@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Config\Paths;
 use App\Services\CategoryService;
+use App\Services\TagService;
 use App\Services\UserService;
 use App\Services\ValidatorService;
 use Framework\Container;
@@ -28,5 +29,10 @@ return [
         $db =  $container->get(Database::class);
 
         return new CategoryService($db);
-    }
+    },
+    TagService::class => function (Container $container) {
+        $db =  $container->get(Database::class);
+
+        return new TagService($db);
+    },
 ];

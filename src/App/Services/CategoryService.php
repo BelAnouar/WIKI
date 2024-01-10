@@ -10,24 +10,55 @@ use Framework\Database;
 
 class CategoryService
 {
-
+    private $idCategorie;
+    private $nameCategorie;
 
 
     public function __construct(private Database $db)
     {
     }
-
-    public  function create(array $formData)
+    public function __get($parametre)
     {
-        $categoryN = $formData["Category"];
+        return $this->$parametre;
+    }
+    public function __set($parametre, $value)
+    {
+        $this->$parametre = $value;
+    }
 
-        $this->db->query("INSERT INTO  category (categoryName) VALUES (:categoryName)", [":categoryName" => $categoryN]);
+    public  function create(array $formData, array $FILES)
+    {
+        $orig_file = $FILES["ImgCategory"]["tmp_name"];
+        $ext = $FILES["ImgCategory"]["name"];
+
+        $target_dir = __DIR__ . "./../../../public/assets/images/";
+        $destination = "$target_dir$ext";
+        $destinationImg = "/assets/images/" . $ext;
+
+
+        move_uploaded_file($orig_file, $destination);
+        $categoryN = $formData["Category"];
+        $DescCategory = $formData["DbCategory"];
+
+        $this->db->query("INSERT INTO  category (categoryName,categoryImg , categoryDesc) VALUES (:categoryName , :imgC , :DescC)", [":categoryName" => $categoryN, ":imgC" => $destinationImg, ":DescC" => $DescCategory]);
     }
     public  function feachAllCategory()
     {
+        $categoriesData = $this->db->query("SELECT * FROM  category")->findAll();
+        $categories = [];
 
+        foreach ($categoriesData as $categoryData) {
 
-        return  $this->db->query("SELECT * FROM  category")->findAll();
+            self::__set('idCategorie', $categoryData['categoryId']);
+            self::__set('nameCategorie', $categoryData['categoryName']);
+
+            $categories[] = [
+                'idCategorie' => self::__get('idCategorie'),
+                'nameCategorie' => self::__get('nameCategorie'),
+            ];
+        }
+
+        return $categoriesData;
     }
     public  function delete($idCat)
     {

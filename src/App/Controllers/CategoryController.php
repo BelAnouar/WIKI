@@ -17,12 +17,14 @@ class CategoryController
     public function index()
     {
         $categories = $this->category->feachAllCategory();
+
         echo  $this->view->render("category.php", ["categories" => $categories]);
     }
 
     public function  addCategory()
     {
-        $this->category->create($_POST);
+
+        $this->category->create($_POST, $_FILES);
         redirectTo($_SERVER['HTTP_REFERER']);
     }
     public function  DeleteCategory(array $param)
@@ -36,6 +38,7 @@ class CategoryController
     {
         header('Content-Type: application/json');
         $idCategory = $param["categoryId"];
+
         $response = $this->category->getbyId($idCategory);
         echo json_encode($response);
     }
@@ -45,5 +48,11 @@ class CategoryController
         header('Content-Type: application/json');
 
         echo json_encode(["fk" => "kld"]);
+    }
+    public function  cotegiesPage()
+
+    {
+        $categories = $this->category->feachAllCategory();
+        echo $this->view->render("/categories.php", ["categories" => $categories]);
     }
 }
