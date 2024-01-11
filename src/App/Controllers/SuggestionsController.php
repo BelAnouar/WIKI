@@ -22,6 +22,11 @@ class SuggestionsController
     {
 
         $search = $_GET["search"];
-        echo $this->view->render("/components/suggestions.php");
+
+        $wikis = $this->wiki->getWikisbyTitle($search);
+        $categories = $this->categorie->getCategorybyName($search);
+        $tags = $this->tag->getTagsbyName($search);
+
+        echo $this->view->render("/components/suggestions.php", ["wikis" => $wikis, "categories" => $categories, "tags" => $tags]);
     }
 }

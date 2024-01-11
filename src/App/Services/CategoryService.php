@@ -72,4 +72,10 @@ class CategoryService
 
         return   $this->db->query("SELECT * FROM category WHERE categoryId = :id", [":id" => $idCat])->find();
     }
+
+    public function getCategorybyName($search)
+    {
+
+        return  $this->db->query("SELECT * FROM category WHERE categoryName LIKE :categoryName", [":categoryName" => "%$search%"])->findAll();
+    }
 }

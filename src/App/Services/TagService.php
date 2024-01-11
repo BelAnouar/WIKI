@@ -61,4 +61,10 @@ class TagService
 
         return   $this->db->query("SELECT * FROM tag WHERE tagId = :id", [":id" => $idTag])->find();
     }
+
+    public function getTagsbyName($search)
+    {
+
+        return  $this->db->query("SELECT * FROM tag WHERE tagName LIKE :tagName", [":tagName" => "%$search%"])->findAll();
+    }
 }

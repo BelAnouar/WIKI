@@ -54,4 +54,9 @@ class WikiService
 
         $this->db->query("DELETE FROM wiki WHERE wikiId = :id", [":id" => $idW]);
     }
+    public function getWikisbyTitle($search)
+    {
+
+        return   $this->db->query("SELECT * FROM wiki WHERE title LIKE :title", [":title" => "%$search%"])->findAll();
+    }
 }

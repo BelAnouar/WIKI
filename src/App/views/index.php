@@ -48,22 +48,30 @@
 
             </div>
 
-            <div id="suggestions" class="absolute mt-2  z-50 w-96 hidden  rounded-md bg-white">
-                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                    <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+            <div id="suggestions" class="absolute mt-2 z-50 w-96 hidden rounded-md bg-white py-2 px-1">
+                <!-- Tag suggestions -->
+                <div>
+                    <h6 class="text-sm font-medium text-gray-700 mb-2">Tags</h6>
+                    <div class="tag-suggestion cursor-pointer py-2 px-3 hover:bg-slate-100">
+                        <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
+                        <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                    </div>
+                    <div class="tag-suggestion cursor-pointer py-2 px-3 hover:bg-slate-100">
+                        <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
+                        <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                    </div>
                 </div>
-                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                    <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-                </div>
-                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                    <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
-                </div>
-                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
-                    <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
-                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                <!-- Category suggestions -->
+                <div>
+                    <h6 class="text-sm font-medium text-gray-700 mb-2">Category</h6>
+                    <div class="category-suggestion cursor-pointer py-2 px-3 hover:bg-slate-100">
+                        <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
+                        <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                    </div>
+                    <div class="category-suggestion cursor-pointer py-2 px-3 hover:bg-slate-100">
+                        <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
+                        <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,8 +178,8 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-
-                    console.log(xhr.responseText);
+                    suggestions.innerHTML = ""
+                    suggestions.innerHTML = xhr.responseText;
 
                 } else {
                     console.error('Error ');
