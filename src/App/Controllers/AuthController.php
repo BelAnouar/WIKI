@@ -23,9 +23,22 @@ class AuthController
 
     public function register()
     {
+
+        $this->userService->create($_POST);
+        redirectTo($_SERVER['HTTP_REFERER']);
     }
     public function  loginPage()
     {
         echo  $this->view->render("login.php");
+    }
+    public function  login()
+    {
+        $role = $this->userService->AuthUser($_POST);
+
+        if ($role === "Author") {
+            redirectTo("/");
+        } else {
+            redirectTo("/dashboard");
+        }
     }
 }

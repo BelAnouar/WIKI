@@ -28,7 +28,7 @@
                         Create your account
                     </p>
 
-                    <form action="">
+                    <form method="post">
                         <div class="mt-5">
                             <input placeholder="Username" type="text" name="userName" id="userName" class="border border-gray-400 py-2.5 px-2 w-full">
                         </div>
@@ -38,14 +38,14 @@
                         <div class="mt-5">
                             <input placeholder="Password" type='password' name="pass" id="pass" class="border border-gray-400 py-2.5 px-2 w-full">
                         </div>
-                        <div class="mt-5">
+                        <!-- <div class="mt-5">
 
                             <select name="role" id="role" class="border border-gray-400 py-2.5 px-2 w-full">
                                 <option value="client">client</option>
 
                                 <option value="author">author</option>
                             </select>
-                        </div>
+                        </div> -->
                         <div class="mt-5">
 
                             <input type="checkbox" name="accept" id="accept" class="border border-gray-400 rounded-none ">

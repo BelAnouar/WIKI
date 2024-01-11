@@ -7,6 +7,8 @@ use App\Services\CategoryService;
 use App\Services\TagService;
 use App\Services\UserService;
 use App\Services\ValidatorService;
+use App\Services\WikiService;
+use App\Services\WikiTagService;
 use Framework\Container;
 use Framework\Database;
 use Framework\TemplateEngine;
@@ -35,4 +37,14 @@ return [
 
         return new TagService($db);
     },
+    WikiService::class => function (Container $container) {
+        $db = $container->get(Database::class);
+        return new WikiService($db);
+    },
+
+    WikiTagService::class => function (Container $container) {
+        $db = $container->get(Database::class);
+        return new WikiTagService($db);
+    },
+
 ];

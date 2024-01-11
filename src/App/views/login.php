@@ -25,7 +25,7 @@
                         Welcome back! Sign in here
                     </p>
 
-                    <form action="">
+                    <form method="post">
 
                         <div class="mt-5">
                             <input placeholder="Email" type="email" name="email" id="email" class="border border-gray-400 py-2.5 px-2 w-full">

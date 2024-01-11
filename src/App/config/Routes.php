@@ -12,6 +12,7 @@ use App\Controllers\HomeController;
 use App\Controllers\AuthController;
 use App\Controllers\CategoryController;
 use App\Controllers\DashboardController;
+use App\Controllers\SuggestionsController;
 use App\Controllers\TagController;
 use App\Controllers\WikiController;
 
@@ -42,4 +43,11 @@ function registerRoutes(App $app)
 
     // wiki
     $app->get('/Wiki/{categoryId}', [WikiController::class, "index"]);
+    $app->get('/Wiki/edit/{wikiId}', [WikiController::class, "edit"]);
+    $app->post('/Wiki/{categoryId}', [WikiController::class, "addWiki"]);
+    $app->delete('/Wiki/{wikiId}', [WikiController::class, "deleteWiki"]);
+
+    //modal
+
+    $app->get("/suggestions", [SuggestionsController::class, "index"]);
 }

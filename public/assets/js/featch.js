@@ -1,4 +1,6 @@
-const editCategory=document.querySelectorAll("#EditC");
+const editCategory=document.querySelectorAll(".EditC");
+
+
 
 const modal=document.querySelector("#my_modal_3")
 const Category=document.querySelector("#CategoryE")

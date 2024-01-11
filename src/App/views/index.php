@@ -1,3 +1,7 @@
+<?php include $this->resolve("partials/_hearderu.php");
+
+
+?>
 <!-- <section class="h-full mx-h-[900px] mb-17 xl:mb-24">
         <div class="flex flex-col lg:flex-row">
 
@@ -30,13 +34,38 @@
                 </g>
             </svg>
         </a>
-        <div class="flex items-center border border-gray-200 rounded-full p-3 shadow text-xl w-96">
-            <div> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-purple-600">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
+        <div class="">
+            <div id="s" class=" relative flex items-center border border-gray-200 rounded-full p-3 shadow text-xl w-96">
+                <div> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-purple-600">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </div>
+
+                <input type="search" name="search" id="search" class="w-full outline-none px-2 dark:bg-transparent" placeholder="Search on Wiki...">
+
+
+
+
             </div>
 
-            <input type="search" name="search" id="search" class="w-full outline-none px-2 dark:bg-transparent" placeholder="Search on Wiki...">
+            <div id="suggestions" class="absolute mt-2  z-50 w-96 hidden  rounded-md bg-white">
+                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                    <p class="text-sm font-medium text-gray-600">Button Ripple Effect</p>
+                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                </div>
+                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                    <p class="text-sm font-medium text-gray-600">Custom Radio Buttons</p>
+                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                </div>
+                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                    <p class="text-sm font-medium text-gray-600">Expand Images on Hover</p>
+                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                </div>
+                <div class="cursor-pointer py-2 px-3 hover:bg-slate-100">
+                    <p class="text-sm font-medium text-gray-600">Custom Checkbox</p>
+                    <p class="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -53,7 +82,7 @@
         <div class="container mx-auto my-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14 card-plant">
 
-                <div class="card  bg-neutral shadow-xl">
+                <div class="card z-10 bg-neutral shadow-xl">
                     <figure><img src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" /></figure>
                     <div class="card-body -m-5">
                         <h2 class="card-title">News</h2>
@@ -120,3 +149,38 @@
         </div>
     </section>
 </main>
+
+
+
+
+
+<script>
+    const s = document.querySelector("#s")
+    const search = document.querySelector("#search")
+    const suggestions = document.querySelector("#suggestions")
+    s.addEventListener('click', function() {
+        suggestions.classList.remove("hidden");
+
+    })
+
+    search.addEventListener("input", function() {
+        const valueSearch = this.value
+        const xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+
+                    console.log(xhr.responseText);
+
+                } else {
+                    console.error('Error ');
+                }
+            }
+        };
+
+        xhr.open('GET', `/suggestions?search=${valueSearch}`, true);
+        xhr.send();
+
+    })
+</script>
