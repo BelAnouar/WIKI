@@ -44,10 +44,10 @@ class CategoryController
     }
     public function  updateCategory(array $param)
 
-    {
-        header('Content-Type: application/json');
-
-        echo json_encode(["fk" => "kld"]);
+    {;
+        $idCategory = $param["categoryId"];
+        $this->category->update($_POST, $_FILES, $idCategory);
+        redirectTo("/category");
     }
     public function  cotegiesPage()
 

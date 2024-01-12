@@ -4,6 +4,8 @@ const editCategory=document.querySelectorAll(".EditC");
 
 const modal=document.querySelector("#my_modal_3")
 const Category=document.querySelector("#CategoryE")
+
+const desciption=document.querySelector("#DbCategoryE")
 const formE_C=document.querySelector("#formE_C")
 const btnEdit=document.querySelector("#btnEdit")
 
@@ -25,38 +27,41 @@ editCategory.forEach(el=>
         throw new Error('Network response was not ok.');
       })
       .then(data => {
-        const {categoryId,categoryName}= data
+        const {categoryId,categoryName,categoryDesc}= data
        
-      
+    
         
         modal.showModal()
         
         Category.value=categoryName
-        btnEdit.value=categoryId
+        desciption.value=categoryDesc
+        btnEdit.value=categoryId 
+
+        formE_C.setAttribute("action",`/category/update/${categoryId}`)
       })
 
   
 }))
 
 
-formE_C.addEventListener('submit',function(e){
-  e.preventDefault();
+// formE_C.addEventListener('submit',function(e){
+//   e.preventDefault();
   
-  const idCategory =btnEdit.value
-  fetch(`/category/${idCategory}`,{method: "POST" , headers: {
+//   const idCategory =btnEdit.value
+//   fetch(`/category/${idCategory}`,{method: "POST" , headers: {
 
-    "Content-Type": "application/json",
+//     "Content-Type": "application/json",
    
-  },
+//   },
 
-}).then(response => {
-    if (response.ok) {
-    console.log(response.json());  
-    }
-    throw new Error('Network response was not ok.');
-  })
-  .then(data => {
-    console.log(data);
-  })
+// }).then(response => {
+//     if (response.ok) {
+//     console.log(response.json());  
+//     }
+//     throw new Error('Network response was not ok.');
+//   })
+//   .then(data => {
+//     console.log(data);
+//   })
 
-})
+// })

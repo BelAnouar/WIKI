@@ -78,4 +78,30 @@ class CategoryService
 
         return  $this->db->query("SELECT * FROM category WHERE categoryName LIKE :categoryName", [":categoryName" => "%$search%"])->findAll();
     }
+    public function update(array $formData, array $FILES, $idCategory)
+    {
+        $orig_file = $FILES["ImgCategoryE"]["tmp_name"];
+        $ext = $FILES["ImgCategoryE"]["name"];
+
+        $target_dir = __DIR__ . "./../../../public/assets/images/";
+        $destination = "$target_dir$ext";
+        $destinationImg = "/assets/images/" . $ext;
+
+
+        move_uploaded_file($orig_file, $destination);
+
+
+        $categoryName = $formData["CategoryE"];
+        $categoryDesc = $formData["DbCategoryE"];
+
+        $this->db->query(
+            "UPDATE category SET categoryName = :categoryName, categoryImg = :imgC, categoryDesc = :DescC WHERE categoryId = :id",
+            [
+                ":categoryName" => $categoryName,
+                ":imgC" => $destinationImg,
+                ":DescC" => $categoryDesc,
+                ":id" => $idCategory
+            ]
+        );
+    }
 }

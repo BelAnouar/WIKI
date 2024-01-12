@@ -75,14 +75,25 @@
         </form>
         <h3 class="font-bold text-lg">Update Category</h3>
         <p class="py-4">Press ESC key or click on ✕ button to close</p>
-        <form id="formE_C" method="POST">
+        <form id="formE_C" action="" method="POST" enctype='multipart/form-data'>
+            <div class="input-type">
+                <label class="block text-gray-700 text-md font-bold mb-2">
+                    Img Category
+                </label>
+                <input type="file" id="ImgCategoryE" name="ImgCategoryE" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="Category" />
+            </div>
             <div class="input-type">
                 <label class="block text-gray-700 text-md font-bold mb-2">
                     Category
                 </label>
-                <input type="text" id="CategoryE" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="Category" />
+                <input type="text" name="CategoryE" id="CategoryE" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="Category" />
             </div>
-
+            <div class="input-type">
+                <label class="block text-gray-700 text-md font-bold mb-2">
+                    Description Category
+                </label>
+                <input type="text" id="DbCategoryE" name="DbCategoryE" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="    Description Category" />
+            </div>
 
             <div>
                 <button id="btnEdit" type="submit" class="flex justify-center text-md w-2/6 py-2 mt-[2.5rem] bg-cyan-500 text-white border rounded-md hover:text-black hover:bg-gray-50 hover:border-cyan-500">

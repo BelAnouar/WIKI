@@ -31,8 +31,9 @@ function registerRoutes(App $app)
     $app->get('/category', [CategoryController::class, 'index']);
     $app->get('/category/{categoryId}', [CategoryController::class, 'getCategory']);
     $app->post('/category', [CategoryController::class, 'addCategory']);
+
     $app->delete('/category/{categoryId}', [CategoryController::class, 'DeleteCategory']);
-    $app->post('/category/{categoryId}', [CategoryController::class, 'updateCategory']);
+    $app->post('/category/update/{categoryId}', [CategoryController::class, 'updateCategory']);
     //TAgs
     $app->get('/tag', [TagController::class, 'index']);
     $app->get('/tag/{tagid}', [TagController::class, 'gettag']);
