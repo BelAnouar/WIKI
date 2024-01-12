@@ -1,4 +1,4 @@
-<div class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50 py-10" id="modal">
+<div class="fixed left-0 top-0 flex h-full w-full items-center justify-center  bg-black bg-opacity-50 py-10  " id="modal">
     <div class="max-h-full w-full max-w-xl overflow-y-auto  bg-white">
         <div class="w-full">
 

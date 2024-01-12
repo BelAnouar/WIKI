@@ -29,8 +29,10 @@ class WikiController
     {
         $wikiId = $params["wikiId"];
         $wikis = $this->wiki->getWikiByIdW($wikiId);
+        $wikiId = $wikis["wikiId"];
+        $tagWiki = $this->wikiTag->getWikiTagByidW($wikiId);
 
-        echo $this->view->render("/wikiPage.php", ["wikis" => $wikis]);
+        echo $this->view->render("/wikiPage.php", ["wikis" => $wikis, "tagsName" => $tagWiki]);
     }
     public function addWiki(array $params)
     {
