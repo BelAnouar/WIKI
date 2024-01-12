@@ -48,7 +48,7 @@
 
             </div>
 
-            <div id="suggestions" class="absolute mt-2 z-50 w-96 hidden rounded-md bg-white py-2 px-1">
+            <div id="suggestions" class="absolute mt-2 z-50 w-96 hidden rounded-md shadow-2xl border border-black/5 bg-white py-2 px-1">
                 <!-- Tag suggestions -->
                 <div>
                     <h6 class="text-sm font-medium text-gray-700 mb-2">Tags</h6>

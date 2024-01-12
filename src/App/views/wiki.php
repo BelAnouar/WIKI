@@ -27,41 +27,43 @@
         <div class="container mx-auto my-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14 card-plant">
                 <?php foreach ($wikis as $wiki) { ?>
+
                     <div class="card  bg-neutral dark:bg-base-100 shadow-xl">
-
-                        <div class="card-body -m-5">
-                            <div class=" flex justify-between items-center">
-                                <div>
-                                    <img class="rounded-full bg-cover w-12 h-12 " src="<?= $wiki["imageWiki"] ?>" alt="wiki" />
-                                </div>
-                                <div class="dropdown dropdown-right">
-                                    <div tabindex="0" role="button" class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
+                        <a href="/Wiki/view/<?= $wiki['wikiId']  ?>">
+                            <div class="card-body -m-5">
+                                <div class=" flex justify-between items-center">
+                                    <div>
+                                        <img class="rounded-full bg-cover w-12 h-12 " src="<?= $wiki["imageWiki"] ?>" alt="wiki" />
                                     </div>
-                                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                        <li><button value="<?= e($wiki['wikiId']); ?>" class="edit">edit</button></li>
-                                        <li>
-                                            <form action="/Wiki/<?php echo e($wiki['wikiId']); ?>" method="POST">
+                                    <div class="dropdown dropdown-right">
+                                        <div tabindex="0" role="button" class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            </svg>
+                                        </div>
+                                        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                            <li><button value="<?= e($wiki['wikiId']); ?>" class="edit">edit</button></li>
+                                            <li>
+                                                <form action="/Wiki/<?php echo e($wiki['wikiId']); ?>" method="POST">
 
-                                                <input type="hidden" name="_METHOD" value="DELETE" />
-                                                <button type="submit">delete</button>
-                                            </form>
-                                        </li>
-                                    </ul>
+                                                    <input type="hidden" name="_METHOD" value="DELETE" />
+                                                    <button type="submit">delete</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <h2 class="card-title"><?= $wiki["title"] ?></h2>
+                                <p><?= $wiki["content"] ?>...</p>
+
                             </div>
-                            <h2 class="card-title"><?= $wiki["title"] ?></h2>
-                            <p><?= $wiki["content"] ?>...</p>
 
-                        </div>
-
-                        <figure><img src="<?= $wiki["imageWiki"] ?>" alt="wiki" /></figure>
-                        <div class="card-actions py-2 px-3">
-                            <div class="badge badge-outline">Fashion</div>
-                            <div class="badge badge-outline">Products</div>
-                            <div class="badge badge-outline">Products</div>
-                        </div>
+                            <figure><img src="<?= $wiki["imageWiki"] ?>" alt="wiki" /></figure>
+                            <div class="card-actions py-2 px-3">
+                                <div class="badge badge-outline">Fashion</div>
+                                <div class="badge badge-outline">Products</div>
+                                <div class="badge badge-outline">Products</div>
+                            </div>
+                        </a>
                     </div>
                 <?php  } ?>
             </div>

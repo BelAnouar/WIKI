@@ -25,6 +25,13 @@ class WikiController
         $tags = $this->tags->feachAllTags();
         echo $this->view->render("/wiki.php", ["wikis" => $wikis, "categorie" => $categorie, "tags" => $tags]);
     }
+    public function WikiPage(array $params)
+    {
+        $wikiId = $params["wikiId"];
+        $wikis = $this->wiki->getWikiByIdW($wikiId);
+
+        echo $this->view->render("/wikiPage.php", ["wikis" => $wikis]);
+    }
     public function addWiki(array $params)
     {
 
