@@ -2,7 +2,7 @@ const editCategory=document.querySelectorAll(".EditT");
 const modal=document.querySelector("#my_modal_3")
 
 const ETag=document.querySelector("#ETag");
-const editTag=document.querySelector("#editTag");
+const editTag=document.querySelector("#formEditTag");
 
 editCategory.forEach(el=>
     el.addEventListener("click",function(e){
@@ -22,12 +22,12 @@ editCategory.forEach(el=>
         throw new Error('Network response was not ok.');
       })
       .then(data => {
-    let {tagsId,tagName}=data
+    let {tagId,tagName}=data
        
       console.log(tagName);
         ETag.value = tagName
         modal.showModal()
-        
+        editTag.setAttribute("action", `/tag/update/${tagId}`);
         
       })
 

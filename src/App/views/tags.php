@@ -76,7 +76,7 @@
         </form>
         <h3 class="font-bold text-lg">Update Tag</h3>
         <p class="py-4">Press ESC key or click on ✕ button to close</p>
-        <form method="POST">
+        <form id="formEditTag" action="" method="POST">
             <div class="input-type">
                 <label class="block text-gray-700 text-md font-bold mb-2">
                     Tag

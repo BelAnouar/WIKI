@@ -41,7 +41,8 @@ class TagController
     }
     public function updateTAg(array $params)
     {
-
-        dd($params);
+        $idTag = $params["tagid"];
+        $this->tag->update($_POST, $idTag);
+        redirectTo("/tag");
     }
 }

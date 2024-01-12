@@ -67,4 +67,18 @@ class TagService
 
         return  $this->db->query("SELECT * FROM tag WHERE tagName LIKE :tagName", [":tagName" => "%$search%"])->findAll();
     }
+    public function update(array $formData, $idTag)
+    {
+        $tagName = $formData["eTag"];
+
+
+        $this->db->query(
+            "UPDATE tag SET tagName = :tagName  WHERE tagId = :id",
+            [
+                ":tagName" => $tagName,
+
+                ":id" => $idTag
+            ]
+        );
+    }
 }
