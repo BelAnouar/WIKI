@@ -11,7 +11,7 @@
 
         <div class="relative text-black text-base-100">
             <h3 class="text-lg font-black after:content-oval after:absolute after:left-[50%] after:-bottom-2.5 after:-z-10 md:text-4xl">
-                NEW </h3>
+                The last Categories </h3>
         </div>
 
         <div class="container mx-auto my-4">
@@ -44,3 +44,5 @@
 
     </section>
 </main>
+
+<?php include $this->resolve("partials/_footer.php");

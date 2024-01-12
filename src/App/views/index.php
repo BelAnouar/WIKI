@@ -84,42 +84,34 @@
 
         <div class="relative text-black text-base-100">
             <h3 class="text-lg font-black after:content-oval after:absolute after:left-[50%] after:-bottom-2.5 after:-z-10 md:text-4xl">
-                NEW </h3>
+                The last Categories </h3>
         </div>
 
         <div class="container mx-auto my-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14 card-plant">
+                <?php foreach ($categories as $categorie) {
 
-                <div class="card z-10 bg-neutral shadow-xl">
+                ?>
+                    <div class="card  bg-neutral shadow-xl">
+                        <figure><img src="<?= $categorie['categoryImg'] ?>" alt="Shoes" /></figure>
+                        <div class="card-body -m-5">
+                            <h2 class="card-title"><?= $categorie['categoryName'] ?></h2>
+                            <p><?= $categorie['categoryDesc'] ?></p>
+                            <div class="card-actions py-2 ">
+                                <a href="/Wiki/<?= $categorie['categoryId'] ?>" class="link link-hover">See Wikis &#8594; </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php  } ?>
+                <!-- <div class="card  bg-neutral shadow-xl">
                     <figure><img src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" /></figure>
                     <div class="card-body -m-5">
                         <h2 class="card-title">News</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error harum ipsa corporis ut, maiores odio cumque voluptas voluptate rem veritatis sequi dolores aspernatur quis, dicta nobis necessitatibus eos totam.</p>
-                        <div class="card-actions justify-end">
-
-                        </div>
+                       
                     </div>
-                </div>
-                <div class="card  bg-neutral shadow-xl">
-                    <figure><img src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" /></figure>
-                    <div class="card-body -m-5">
-                        <h2 class="card-title">News</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error harum ipsa corporis ut, maiores odio cumque voluptas voluptate rem veritatis sequi dolores aspernatur quis, dicta nobis necessitatibus eos totam.</p>
-                        <div class="card-actions justify-end">
+                </div> -->
 
-                        </div>
-                    </div>
-                </div>
-                <div class="card  bg-neutral shadow-xl">
-                    <figure><img src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" /></figure>
-                    <div class="card-body -m-5">
-                        <h2 class="card-title">News</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit error harum ipsa corporis ut, maiores odio cumque voluptas voluptate rem veritatis sequi dolores aspernatur quis, dicta nobis necessitatibus eos totam.</p>
-                        <div class="card-actions justify-end">
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -127,32 +119,47 @@
 
 
     <section class="py-4">
-
         <div class="relative text-black text-base-100">
             <h3 class="text-lg font-black after:content-oval after:absolute after:left-[50%] after:-bottom-2.5 after:-z-10 md:text-4xl">
                 WIKIS </h3>
         </div>
 
+
+
+
         <div class="container mx-auto my-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-14 card-plant">
-                <div class="card  bg-neutral dark:bg-base-100 shadow-xl">
+                <?php foreach ($wikis as $wiki) { ?>
 
-                    <div class="card-body -m-5">
-                        <div class=" ">
-                            <img class="rounded-full bg-cover w-12 h-12 " src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" />
+                    <div class="card  bg-neutral dark:bg-base-100 shadow-xl">
+
+                        <div class="card-body -m-5">
+                            <div class=" flex justify-between items-center">
+                                <div>
+                                    <img class="rounded-full bg-cover w-12 h-12 " src="<?= $wiki["imageWiki"] ?>" alt="wiki" />
+                                </div>
+
+                            </div>
+                            <a href="/Wiki/view/<?= $wiki['wikiId']  ?>">
+                                <h2 class="card-title"><?= $wiki["title"] ?></h2>
+                                <p><?= $wiki["content"] ?>...</p>
+                            </a>
                         </div>
-                        <h2 class="card-title">News</h2>
-                        <p>Lorem ipsum dolor sit amet,...</p>
+
+                        <figure><img src="<?= $wiki["imageWiki"] ?>" alt="wiki" /></figure>
+                        <div class="card-actions py-2 px-3">
+                            <?php if (isset($wiki['tagName'])) {
+
+                                $tagsName = explode(',', $wiki['tagName']);
+
+                                foreach ($tagsName as $tagName) { ?>
+                                    <div class="badge badge-outline"># <?php echo $tagName; ?></div>
+                            <?php  }
+                            } ?>
+                        </div>
 
                     </div>
-
-                    <figure><img src="https://static.techspot.com/images2/news/bigimage/2018/10/2018-10-25-image-10.jpg" alt="Shoes" /></figure>
-                    <div class="card-actions py-2 px-3">
-                        <div class="badge badge-outline">Fashion</div>
-                        <div class="badge badge-outline">Products</div>
-                        <div class="badge badge-outline">Products</div>
-                    </div>
-                </div>
+                <?php  } ?>
             </div>
         </div>
     </section>

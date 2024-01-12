@@ -34,13 +34,7 @@
                             <input placeholder="Password" type='password' name="pass" id="pass" class="border border-gray-400 py-2.5 px-2 w-full">
                         </div>
 
-                        <div class="mt-5">
 
-                            <input type="checkbox" name="accept" id="accept" class="border border-gray-400 rounded-none ">
-                            <span>
-                                I accept the Tearms of Use & Privacy Policy
-                            </span>
-                        </div>
                         <div class="mt-5">
 
                             <button class="w-full bg-[#414046] text-white py-3.5" type="submit">Login</button>

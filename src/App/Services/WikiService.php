@@ -88,6 +88,16 @@ class WikiService
         GROUP by w.wikiId
         HAVING`categoryId` =:id ;", [':id' => $idC])->findAll();
     }
+    public function getWikis()
+    {
+        return $this->db->query("
+            SELECT w.*, GROUP_CONCAT(t.tagName) as tagNames
+            FROM wiki w
+            LEFT JOIN wikitag wt ON w.wikiId = wt.wikiId
+            LEFT JOIN tag t ON wt.tagId = t.tagId
+            GROUP BY w.wikiId
+        ")->findAll();
+    }
     public function delete($idW)
     {
 

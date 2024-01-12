@@ -81,7 +81,7 @@
 
 </main>
 
-
+<?php include $this->resolve("partials/_footer.php"); ?>
 <script>
     const FormTheme = document.querySelector("#formTheme");
     const namesTag = document.querySelectorAll(".namTags");

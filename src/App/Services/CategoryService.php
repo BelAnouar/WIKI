@@ -108,7 +108,7 @@ class CategoryService
     public function countCategory()
     {
         $categoryCount = $this->db->query(
-            "SELECT COUNT(*) FROM  category",
+            "SELECT COUNT(*) as count FROM  category",
 
         )->count();
 

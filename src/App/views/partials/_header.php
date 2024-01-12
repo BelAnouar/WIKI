@@ -1,3 +1,9 @@
+<?php
+
+if (!isset($_SESSION["user"])) {
+    redirectTo("/login");
+}
+?>
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
