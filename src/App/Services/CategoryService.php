@@ -104,4 +104,14 @@ class CategoryService
             ]
         );
     }
+
+    public function countCategory()
+    {
+        $categoryCount = $this->db->query(
+            "SELECT COUNT(*) FROM  category",
+
+        )->count();
+
+        return $categoryCount;
+    }
 }

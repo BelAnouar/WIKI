@@ -98,4 +98,34 @@ class WikiService
 
         return   $this->db->query("SELECT * FROM wiki WHERE title LIKE :title", [":title" => "%$search%"])->findAll();
     }
+
+
+    public function updateArchivedStatus($wikiId, $isArchived)
+    {
+        $this->db->query(
+            "UPDATE wiki SET isArchived = :isArchived WHERE wikiId = :wikiId",
+            [":isArchived" => $isArchived, ":wikiId" => $wikiId]
+        );
+
+        redirectTo("/archive");
+    }
+
+    public function countWiki()
+    {
+        $wikiCount = $this->db->query(
+            "SELECT COUNT(*) as count FROM wiki ",
+
+        )->count();
+
+        return $wikiCount;
+    }
+    public function countArchivedWiki()
+    {
+        $wikiCount = $this->db->query(
+            "SELECT COUNT(*) as count FROM wiki where isArchived = 1",
+
+        )->count();
+
+        return $wikiCount;
+    }
 }

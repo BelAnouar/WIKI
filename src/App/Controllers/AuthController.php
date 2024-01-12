@@ -23,6 +23,8 @@ class AuthController
 
     public function register()
     {
+        $this->userService->isEmailTaken($_POST['email']);
+
 
         $this->userService->create($_POST);
         redirectTo($_SERVER['HTTP_REFERER']);

@@ -3,7 +3,7 @@
 <section class='grid lg:grid-cols-6 gap-3 px-4 py-4'>
     <div class='lg:col-span-2 col-span-1 bg-blue-200 flex justify-between w-full border p-4 rounded-lg'>
         <div class='flex flex-col w-full pb-4'>
-            <p class='text-2xl font-bold'>44</p>
+            <p class='text-2xl font-bold'><?= $Authors ?></p>
             <p class='text-gray-600'>Author</p>
         </div>
         <div class='bg-blue-400 flex justify-center items-center p-4 rounded-lg'>
@@ -15,10 +15,11 @@
             </span>
         </div>
     </div>
+
     <div class='lg:col-span-2 col-span-1 bg-rose-200 flex justify-between w-full border p-4 rounded-lg'>
         <div class='flex flex-col w-full pb-4'>
             <p class='text-2xl font-bold'>44</p>
-            <p class='text-gray-600'>Wiki</p>
+            <p class='text-gray-600'><?= $wiki ?></p>
         </div>
         <div class='bg-rose-400 flex justify-center items-center p-4 rounded-lg'>
             <span class='text-rose-700 text-lg'>
@@ -31,7 +32,7 @@
     </div>
     <div class='lg:col-span-2 col-span-1 bg-slate-200 flex justify-between w-full border p-4 rounded-lg'>
         <div class='flex flex-col w-full pb-4'>
-            <p class='text-2xl font-bold'>44</p>
+            <p class='text-2xl font-bold'><?= $category ?></p>
             <p class='text-slate-600'>category</p>
         </div>
         <div class='bg-slate-400 flex justify-center items-center p-4 rounded-lg'>
@@ -46,7 +47,7 @@
     </div>
     <div class='lg:col-span-2 col-span-1 bg-indigo-200 flex justify-between w-full border p-4 rounded-lg'>
         <div class='flex flex-col w-full pb-4'>
-            <p class='text-2xl font-bold'>44</p>
+            <p class='text-2xl font-bold'><?= $archived ?></p>
             <p class='text-gray-600'>Archive</p>
         </div>
         <div class='bg-indigo-400 flex justify-center items-center p-4 rounded-lg'>
@@ -60,47 +61,35 @@
     </div>
 </section>
 
-<section class="py-4 px-4">
-    <h1 class="text-2xl font-bold text-gray-900 py-4">Authors</h1>
+
+<section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6 py-4 px-4">
+    <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
+
+        <div class="row-span-3 bg-white shadow rounded-lg width-full">
+
+
+            <div class="overflow-y-auto" style="max-height: 24rem;">
+                <ul class="p-6 space-y-6">
+
+                    <li class="flex items-center">
+                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture">
+                        </div>
+                        <span class="text-gray-600">Annette Watson</span>
+                        <span class="ml-auto font-semibold">9.3</span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
 
 
 
-    <table class="table border border-1 w-full">
-        <!-- head -->
-        <thead>
-            <tr>
-
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-
-            </tr>
-        </thead>
-        <tbody>
-
-            <!-- row 1 -->
-            <tr>
-
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-            </tr>
-            <!-- row 2 -->
-            <tr>
-
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-            </tr>
-            <!-- row 3 -->
-
-        </tbody>
-        <!-- foot -->
-
-    </table>
 
 </section>
-
 
 
 

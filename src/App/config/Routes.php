@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace App\Config;
 
+use App\Controllers\ArchiveController;
 use Framework\App;
 use App\Controllers\HomeController;
 
@@ -54,4 +55,9 @@ function registerRoutes(App $app)
     //modal
 
     $app->get("/suggestions", [SuggestionsController::class, "index"]);
+
+    // ArchiveCategorie 
+    $app->get("/archive", [ArchiveController::class, "index"]);
+    $app->post("/archive/archived/{wikiId}", [ArchiveController::class, "archive"]);
+    $app->post("/archive/inarchive/{wikiId}", [ArchiveController::class, "inarchive"]);
 }

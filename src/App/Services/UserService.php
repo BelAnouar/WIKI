@@ -6,6 +6,7 @@ namespace App\Services;
 
 session_start();
 
+use Exception;
 use Framework\Database;
 
 use Framework\Exceptions\validatorExceptions;
@@ -16,19 +17,19 @@ class UserService
     {
     }
 
-    // public function isEmailTaken(string $email)
-    // {
-    //     $emailCount = $this->db->query(
-    //         "SELECT COUNT(*) FROM user WHERE email = :email",
-    //         [
-    //             'email' => $email
-    //         ]
-    //     )->count();
+    public function isEmailTaken(string $email)
+    {
+        $emailCount = $this->db->query(
+            "SELECT COUNT(*) FROM user WHERE email = :email",
+            [
+                'email' => $email
+            ]
+        )->count();
 
-    //     if ($emailCount > 0) {
-    //         throw new validatorExceptions(['email' => ['Email taken']]);
-    //     }
-    // }
+        if ($emailCount > 0) {
+            throw new Exception("email is already used");
+        }
+    }
 
     public function create(array $formData)
     {
@@ -65,5 +66,16 @@ class UserService
         $_SESSION['user'] = $user["userId"];
 
         return $user["role"];
+    }
+    public function countAuthor()
+    {
+        $authorCount = $this->db->query(
+            "SELECT COUNT(*) as count FROM user WHERE role = :role",
+            [
+                'role' => "Author"
+            ]
+        )->count();
+
+        return $authorCount;
     }
 }
