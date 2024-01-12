@@ -45,6 +45,7 @@ function registerRoutes(App $app)
     $app->get('/Wiki/{categoryId}', [WikiController::class, "index"]);
     $app->get('/Wiki/view/{wikiId}', [WikiController::class, "WikiPage"]);
     $app->get('/Wiki/edit/{wikiId}', [WikiController::class, "edit"]);
+    $app->post('/Wiki/update/{wikiId}', [WikiController::class, "update"]);
     $app->post('/Wiki/{categoryId}', [WikiController::class, "addWiki"]);
     $app->delete('/Wiki/{wikiId}', [WikiController::class, "deleteWiki"]);
 

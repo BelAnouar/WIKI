@@ -167,7 +167,7 @@
     const search = document.querySelector("#search")
     const suggestions = document.querySelector("#suggestions")
     s.addEventListener('click', function() {
-        suggestions.classList.remove("hidden");
+
 
     })
 
@@ -180,7 +180,7 @@
                 if (xhr.status === 200) {
                     suggestions.innerHTML = ""
                     suggestions.innerHTML = xhr.responseText;
-
+                    suggestions.classList.remove("hidden");
                 } else {
                     console.error('Error ');
                 }

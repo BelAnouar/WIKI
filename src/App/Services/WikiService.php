@@ -42,7 +42,12 @@ class WikiService
     public function getWikiByIdW($idW)
     {
 
-        return $this->db->query("SELECT * FROM wiki where wikiId = :idW", [":idW" => $idW])->find();
+        return $this->db->query("SELECT w.*, GROUP_CONCAT( t.tagId ) as tagId
+        FROM wiki w
+        LEFT JOIN wikitag wt ON w.wikiId = wt.wikiId
+        LEFT JOIN tag t ON wt.tagId = t.tagId
+        GROUP by w.wikiId
+        HAVING wikiId = :idW", [":idW" => $idW])->find();
     }
     public function getWikiByIdC($idC)
     {

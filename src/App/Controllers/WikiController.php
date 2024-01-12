@@ -64,4 +64,9 @@ class WikiController
         $response = $this->wiki->getWikiByIdW($idwiki);
         echo json_encode($response);
     }
+
+    public  function update(array $params)
+    {
+        dd($params);
+    }
 }

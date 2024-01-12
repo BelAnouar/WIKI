@@ -19,7 +19,7 @@
                     WIKIS </h3>
             </div>
             <div id="button">
-                <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" onclick="modalHandler(true)">Open Modal</button>
+                <button class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-2 text-xs sm:text-sm" onclick="modalHandler(true)">add wiki</button>
             </div>
 
 
@@ -92,7 +92,8 @@
         item.addEventListener('click', () => {
 
             const prTags = item.closest(".checkTags");
-            const tags = prTags.querySelector("#tag");
+            let key = prTags.getAttribute("data-key");
+            const tags = prTags.querySelector(`#tag${key}`);
 
             tags.checked ? tags.removeAttribute("checked") : tags.setAttribute("checked", "checked");
         });
@@ -134,33 +135,69 @@
 
 
 
-    document.querySelector(".edit").addEventListener("click", function(e) {
-        e.preventDefault();
-        let idTag = e.target.value
+    const edit = document.querySelectorAll(".edit");
+    const imageWikiInput = document.getElementById('imageWiki');
+    const titleInput = document.getElementById('Tilte');
+    const contentTextarea = document.getElementById('Content');
+    const tagsCheckboxes = document.getElementsByClassName('taglist');
+    const addwiki = document.querySelector("#addwiki");
+    const formWiki = document.querySelector("#formWiki");
+
+    edit.forEach(el =>
+        el.addEventListener("click", function(e) {
+            e.preventDefault();
+            let idTag = e.target.value
+
+            console.log("kk");
+            fetch(`/Wiki/edit/${idTag}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+
+                    },
+
+                }).then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    console.log(data);
+
+                    let {
+                        authorId,
+                        categoryId,
+                        content,
+                        imageWiki,
+                        isArchived,
+                        tagId,
+                        title,
+                        wikiId
+                    } = data
+                    let idTags = tagId.split(',');
+                    idTags.forEach(id => {
+                        const tags = document.getElementById(`tag${id}`);
+                        tags.setAttribute("checked", "checked")
+                    });
+                    titleInput.value = title
+                    contentTextarea.value = content
+                    addwiki.textContent = 'Edit Wiki'
+                    addwiki.setAttribute('value', wikiId)
+                    addwiki.setAttribute("id", "editWiki")
+                    formWiki.setAttribute("action", `/Wiki/update/${wikiId}`);
+                    fadeIn(modal)
 
 
-        fetch(`/Wiki/edit/${idTag}`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
 
-                },
-
-            }).then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                console.log(data);
+                })
 
 
-                fadeIn(modal)
+        }))
+
+    function editWiki() {
+        const editwiki = document.querySelector("#editWiki")
 
 
-            })
-
-
-    })
+    }
 </script>

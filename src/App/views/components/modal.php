@@ -1,4 +1,4 @@
-<div class="fixed left-0 top-0 flex h-full w-full items-center justify-center  bg-black bg-opacity-50 py-10  " id="modal">
+<div data-theme="light" class="fixed left-0 top-0 flex h-full w-full items-center justify-center  bg-black bg-opacity-50 py-10  " id="modal">
     <div class="max-h-full w-full max-w-xl overflow-y-auto  bg-white">
         <div class="w-full">
 
@@ -11,7 +11,7 @@
                     </svg>
                 </div>
                 <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">Add your own wiks</h1>
-                <form method="post" enctype='multipart/form-data'>
+                <form method="post" id="formWiki" enctype='multipart/form-data'>
                     <label for="imageWiki" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Image Wiki</label>
                     <input id="imageWiki" name="imageWiki" type="file" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" />
 
@@ -29,8 +29,8 @@
                                 $tagId = $row['tagId'];
                                 $tagName = $row['tagName'];
                             ?>
-                                <div class="mb-4 checkTags">
-                                    <input type="checkbox" name="tags[]" id="tag" class="peer hidden taglist TagTheme" value="<?= $tagId ?>">
+                                <div data-key="<?= $tagId ?>" class="mb-4 checkTags">
+                                    <input type="checkbox" name="tags[]" id="tag<?= $tagId ?>" class="peer hidden taglist TagTheme" value="<?= $tagId ?>">
                                     <label class="namTags w-full p-1 border-2 rounded-xl select-none cursor-pointer peer-checked:border-amber-600 peer-checked:text-amber-600">
                                         <?= $tagName ?>
                                     </label>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="flex items-center justify-start w-full">
-                        <button type="submit" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Add Wiki</button>
+                        <button id="addwiki" value="" type="submit" class="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">Add Wiki</button>
                         <button type="button" class="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
                     </div>
             </div>
