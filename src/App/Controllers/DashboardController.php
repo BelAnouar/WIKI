@@ -23,14 +23,14 @@ class DashboardController
         $category = $this->category->countCategory();
         $wiki = $this->wiki->countWiki();
         $archived = $this->wiki->countArchivedWiki();
-
+        $Author = $this->user->getAllAuthor();
 
 
         echo $this->view->render("dashboard.php",    [
             'Authors' => $Authors,
             'category' => $category,
             'wiki' => $wiki,
-            'archived' => $archived,
+            'archived' => $archived, "Author" => $Author
         ]);
     }
 }

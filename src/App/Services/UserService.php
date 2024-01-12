@@ -78,4 +78,15 @@ class UserService
 
         return $authorCount;
     }
+    public function getAllAuthor()
+    {
+        $author = $this->db->query(
+            "SELECT *  FROM user WHERE role = :role",
+            [
+                'role' => "Author"
+            ]
+        )->findAll();
+
+        return $author;
+    }
 }

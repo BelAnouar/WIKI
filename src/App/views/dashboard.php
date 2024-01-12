@@ -70,15 +70,13 @@
 
             <div class="overflow-y-auto" style="max-height: 24rem;">
                 <ul class="p-6 space-y-6">
+                    <?php foreach ($Author as $row) { ?>
+                        <li class="flex items-center">
 
-                    <li class="flex items-center">
-                        <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                            <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture">
-                        </div>
-                        <span class="text-gray-600">Annette Watson</span>
-                        <span class="ml-auto font-semibold">9.3</span>
-                    </li>
-
+                            <span class="text-gray-600"><?= $row["email"] ?></span>
+                            <span class="ml-auto pointer bg-green-500 text-white py-1 px-2 rounded-full text-xs">active</span>
+                        </li>
+                    <?php  } ?>
                 </ul>
             </div>
         </div>
