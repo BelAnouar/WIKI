@@ -81,7 +81,7 @@
                 <label class="block text-gray-700 text-md font-bold mb-2">
                     Tag
                 </label>
-                <input type="text" name="eTag" id="Tag" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="Tag" />
+                <input type="text" name="eTag" id="ETag" class="border w-full px-4 py-3 focus:outline-none rounded-md" placeholder="Tag" />
             </div>
 
 

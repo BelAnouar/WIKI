@@ -34,6 +34,35 @@ class WikiService
 
         return  $this->db->id();
     }
+    public function update(array $formData, array $FILES, $idW)
+    {
+
+        $orig_file = $FILES["imageWiki"]["tmp_name"];
+        $ext = $FILES["imageWiki"]["name"];
+
+        $target_dir = __DIR__ . "./../../../public/assets/images/";
+        $destination = "$target_dir$ext";
+        $destinationImg = "/assets/images/" . $ext;
+
+
+        move_uploaded_file($orig_file, $destination);
+        $title = $formData["Tilte"];
+        $content = $formData["Content"];
+
+
+
+
+
+        $this->db->query(
+            "UPDATE wiki SET title = :title, content = :content, imageWiki = :imageWiki WHERE wikiId = :wikiId",
+            [
+                ":title" => $title,
+                ":content" => $content,
+                ":imageWiki" => $destinationImg,
+                ":wikiId" => $idW
+            ]
+        );
+    }
     public function featchAllWikis()
     {
 

@@ -39,4 +39,9 @@ class TagController
         $response =   $this->tag->getbyId($idTag);
         echo json_encode($response);
     }
+    public function updateTAg(array $params)
+    {
+
+        dd($params);
+    }
 }

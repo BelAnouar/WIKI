@@ -37,6 +37,7 @@ function registerRoutes(App $app)
     $app->get('/tag', [TagController::class, 'index']);
     $app->get('/tag/{tagid}', [TagController::class, 'gettag']);
     $app->post('/tag', [TagController::class, 'addTag']);
+    $app->post('/tag/update/{tagid}', [TagController::class, 'updateTAg']);
     $app->delete('/tag/{tagid}', [TagController::class, 'deleteTag']);
     //categories home
     $app->get('/categories', [CategoryController::class, "cotegiesPage"]);

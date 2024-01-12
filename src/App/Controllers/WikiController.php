@@ -67,6 +67,12 @@ class WikiController
 
     public  function update(array $params)
     {
-        dd($params);
+        $wikiId =  $params["wikiId"];
+
+
+        $this->wiki->update($_POST, $_FILES, $wikiId);
+
+
+        $this->wikiTag->update($_POST, $wikiId);
     }
 }

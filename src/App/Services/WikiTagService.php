@@ -39,4 +39,36 @@ class WikiTagService
             WHERE `wikiId` = :wikiId
         )", [":wikiId" => $idwiki])->findAll();
     }
+
+
+    public function getCountTag($idwiki, $idtag)
+    {
+        $query = "SELECT COUNT(*) as count FROM `wikitag` WHERE `wikiId` = :wikiId AND `tagId` = :tagId";
+
+        $result = $this->db->query($query, [":wikiId" => $idwiki, ":tagId" => $idtag])->count();
+
+
+        return $result;
+    }
+
+    public function delete($idwiki, $idtags)
+    {
+        $tagIdsString = implode(',', $idtags);
+        $this->db->query("DELETE FROM `wikitag` WHERE `wikiId` = :wikiId and `tagId` not IN (:tagId)", [":wikiId" => $idwiki, ":tagId" => $tagIdsString]);
+    }
+    public  function update(array $formData,  $idwiki)
+    {
+        $tagsId = $formData["tags"];
+
+        $this->delete($idwiki, $tagsId);
+
+        foreach ($tagsId as $tag) {
+            $countTag = $this->getCountTag($idwiki, $tag);
+
+            if ($countTag == 0) {
+
+                $this->db->query("INSERT INTO wikitag (wikiId, tagId) VALUES (:wikiId,:tagId)", [":wikiId" => $idwiki, ":tagId" => $tag]);
+            }
+        }
+    }
 }

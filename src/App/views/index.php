@@ -160,16 +160,15 @@
 
 
 
+<?php include $this->resolve("partials/_footer.php");
 
+
+?>
 
 <script>
-    const s = document.querySelector("#s")
     const search = document.querySelector("#search")
     const suggestions = document.querySelector("#suggestions")
-    s.addEventListener('click', function() {
 
-
-    })
 
     search.addEventListener("input", function() {
         const valueSearch = this.value
