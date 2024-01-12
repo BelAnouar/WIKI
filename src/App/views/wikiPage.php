@@ -15,9 +15,9 @@ $imageWiki = $wikis["imageWiki"];
 
     <div class="flex flex-row w-full gap-4 items-end mt-4 pl-4">
         <h1 class="text-3xl font-medium"><?php echo $title; ?></h1>
-        <?php foreach ($tagsName as $tagsName) {
+        <?php foreach ($tagsName as $tagName) {
         ?>
-            <p class="text-sm p-1 rounded-xl border border-gray-500 text-gray-500"># <?php echo $tagsName['tagName']; ?></p>
+            <p class="text-sm p-1 rounded-xl border border-gray-500 text-gray-500"># <?php echo $tagName['tagName']; ?></p>
         <?php } ?>
     </div>
 

@@ -47,7 +47,12 @@ class WikiService
     public function getWikiByIdC($idC)
     {
 
-        return $this->db->query("SELECT * FROM wiki where categoryId = :id and isArchived = 0 ", [':id' => $idC])->findAll();
+        return $this->db->query("SELECT w.*, GROUP_CONCAT( t.tagName ) as tagName
+        FROM wiki w
+        LEFT JOIN wikitag wt ON w.wikiId = wt.wikiId
+        LEFT JOIN tag t ON wt.tagId = t.tagId
+        GROUP by w.wikiId
+        HAVING`categoryId` =:id ;", [':id' => $idC])->findAll();
     }
     public function delete($idW)
     {

@@ -60,9 +60,14 @@
 
                         <figure><img src="<?= $wiki["imageWiki"] ?>" alt="wiki" /></figure>
                         <div class="card-actions py-2 px-3">
-                            <div class="badge badge-outline">Fashion</div>
-                            <div class="badge badge-outline">Products</div>
-                            <div class="badge badge-outline">Products</div>
+                            <?php if (isset($wiki['tagName'])) {
+
+                                $tagsName = explode(',', $wiki['tagName']);
+
+                                foreach ($tagsName as $tagName) { ?>
+                                    <div class="badge badge-outline"># <?php echo $tagName; ?></div>
+                            <?php  }
+                            } ?>
                         </div>
 
                     </div>
